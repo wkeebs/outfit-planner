@@ -1,6 +1,5 @@
 const router = require('express').Router();
 let User = require('../models/user.model');
-const bcrypt = require('bcrypt');
 
 router.route('/').get((req, res) => {
     User.find()
@@ -10,13 +9,11 @@ router.route('/').get((req, res) => {
 
 router.route('/signup').post(async (req, res) => {
     try {
-        const salt = await bcrypt.genSalt();
-        const hashedPassword = await bcrypt.hash(req.body.password, salt);
         user_detail = {
             "firstName": req.body.firstName,
             "lastName": req.body.lastName,
             "email": req.body.email,
-            "password": hashedPassword
+            "password": req.body.password
         }
 
         const newUser = new User(user_detail);
@@ -32,13 +29,10 @@ router.route('/signup').post(async (req, res) => {
 
 router.route('/create').post(async (req, res) => {
     try {
-        const salt = await bcrypt.genSalt();
-        const hashedPassword = await bcrypt.hash(req.body.password, salt);
         user_details = {
             'username': req.body.username,
             'email': req.body.email,
-            'password': hashedPassword,
-            'salt': salt
+            'password': req.body.password,
         }
 
         const newUser = new User(user_details);
@@ -56,7 +50,7 @@ router.post('/login', async (req, res) => {
     try {
       const user = await User.findOne({ username: req.body.username });
       if (user) {
-        const isPasswordValid = await bcrypt.compare(req.body.password, user.password);
+        const isPasswordValid = await User.findOne(req.body.password, user.password);
         if (isPasswordValid) {
           // Store user details in the session
           req.session.user = {
