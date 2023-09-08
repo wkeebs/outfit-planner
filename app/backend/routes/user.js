@@ -7,31 +7,12 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/signup').post(async (req, res) => {
-    try {
-        user_detail = {
-            "firstName": req.body.firstName,
-            "lastName": req.body.lastName,
-            "email": req.body.email,
-            "password": req.body.password
-        }
 
-        const newUser = new User(user_detail);
-
-        newUser.save()
-            .then(() => res.json('User added!'))
-            .catch(err => res.status(400).json('Error: ' + err));
-    }
-    catch {
-        res.status(500).send();
-    }
-});
-
+// Create route
 router.route('/create').post(async (req, res) => {
     try {
         user_details = {
             'username': req.body.username,
-            'email': req.body.email,
             'password': req.body.password,
         }
 

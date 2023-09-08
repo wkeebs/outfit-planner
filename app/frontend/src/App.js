@@ -1,9 +1,10 @@
 import Login from "./components/Login";
+import CreateAccount from "./components/CreateAccount";
 
 function App() {
   return (
     <div className="App">
-      <Login/>
+      <CreateAccount/>
     </div>
   );
 }
