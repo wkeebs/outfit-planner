@@ -38,7 +38,7 @@ const Wardrobe = () => {
   ];
 
   return (
-    <div className="p-4 border-1 m-8 h-full rounded-2xl shadow-xl hover:shadow-2xl">
+    <div className="bg-white p-4 border-1 rounded-2xl shadow-xl hover:shadow-2xl h-full">
       <h1 className="text-3xl font-semibold mb-6 text-center">Your Wardrobe</h1>
       <div className="flex-col">
         {/* Categories */}

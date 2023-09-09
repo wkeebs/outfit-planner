@@ -51,7 +51,7 @@ function Weather() {
     if (weather === null) {
       return "";
     } else {
-      return `${weather.main.temp}`;
+      return `${weather.main.temp}°C`;
     }
   }
 
@@ -64,25 +64,30 @@ function Weather() {
   }
 
   return (
-    <body class="bg-white p-4 h-screen flex-col justify-center items-center m-8 rounded-2xl shadow-xl hover:shadow-2xl">
-      <h1 class="text-3xl text-center font-semibold mb-4">Weather</h1>
+    <body class="bg-white p-4 flex-col justify-around items-center rounded-2xl shadow-xl hover:shadow-2xl h-full">
+      <h1 class="text-3xl text-center font-semibold h-1/5">Weather</h1>
+      <div class="h-4/5 p-1 w-full text-center uppercase space-y-8 place-content-center">
+        <div class="w-full flex place-content-center">
+          <img
+            width="100"
+            height="100"
+            src="https://img.icons8.com/ios/100/cloud--v1.png"
+            alt="cloud--v1"
+          />
+        </div>
+        <div class="">
+          <span class="text-2xl">{getUserLocation()}</span>
+        </div>
+        <div class="">
+          <span class="text-6xl truncate">{getTemperature()}</span>
+        </div>
+        <div class="">
+          <span class="text-2xl">{getWeatherType()}</span>
+        </div>
       <button onClick={handleLocationClick}>
         {" "}
         Allow Us to access your location so we can design the optimal fit
       </button>
-
-      <div class="flex justify-center items-center h-screen">
-        <div class="bg-white p-1 w-full">
-          <div class="mb-2">
-            Location: <span class="font-bold">{getUserLocation()}</span>
-          </div>
-          <div class="mb-2">
-            Temperature: <span class="font-bold">{getTemperature()}°C</span>
-          </div>
-          <div class="mb-2">
-            Weather: <span class="font-bold">{getWeatherType()}</span>
-          </div>
-        </div>
       </div>
     </body>
   );
