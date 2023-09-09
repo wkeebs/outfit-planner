@@ -70,15 +70,7 @@ function Weather() {
         Allow Us to access your location so we can design the optimal fit
       </button>
 
-      <div class="flex justify-center items-center h-screen 2xl:max-h-screen">
-        <div class="w-1/4 bg-white p-4">
-          <div class="mb-4">Hats</div>
-          <div class="mb-4">Jackets</div>
-          <div class="mb-4">Shirts</div>
-          <div class="mb-4">Pants</div>
-          <div class="mb-4">Shoes</div>
-        </div>
-
+      <div class="flex justify-center items-center h-screen">
         <div class="w-1/2 bg-white p-4">
           <h2 class="text-2xl font-bold mb-4">Generated Outfit</h2>
           <img

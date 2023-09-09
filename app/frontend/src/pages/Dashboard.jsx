@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Weather from "../components/Weather";
+import Wardrobe from "../components/Wardrobe";
 
 
 function Dashboard () {
@@ -7,6 +8,7 @@ function Dashboard () {
 
     return(
         <div>
+            <Wardrobe/>
             <Weather/>
         </div>
     )

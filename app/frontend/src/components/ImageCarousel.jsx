@@ -1,12 +1,11 @@
 import React from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import {Carousel} from 'react-responsive-carousel'
 
 const ImageCarousel = () => {
   const images = [
-    'image1.jpg',
-    'image2.jpg',
-    'image3.jpg',
+    'app/frontend/src/components/images/hat1.jpg',
+    'app/frontend/src/components/images/hat1.jpg',
+    'app/frontend/src/components/images/hat1.jpg',
     // Add more image URLs here
   ];
 
