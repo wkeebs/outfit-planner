@@ -1,24 +1,41 @@
-import ImageCarousel from "./ImageCarousel";
+import React from 'react';
+import ImageCarousel from './ImageCarousel'; // Import your ImageCarousel component
 
-function Wardrobe() {
-    return (
-        <div>
-          <h2>Hats</h2>
-          <ImageCarousel images={['./images/hat1.jpg', './images/hat2.jpg', '../images/hat3.jpg']} />
-    
-          <h2>Jackets</h2>
-          <ImageCarousel images={['./images/jacket1.jpg', './images/jacket2.jpg', '../images/jacket3.jpg']} />
-    
-          <h2>Shirts</h2>
-          <ImageCarousel images={['./images/shirt1.jpg', './images/shirt2.jpg', '../images/shirt3.jpg']} />
-    
-          <h2>Pants</h2>
-          <ImageCarousel images={['./images/pants1.jpg', './images/pants2.jpg', '../images/pants3.jpg']} />
-    
-          <h2>Shoes</h2>
-          <ImageCarousel images={['./images/shoes1.jpg', './images/shoes2.jpg', '../images/shoes3.jpg']} />
+const Wardrobe = () => {
+  return (
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-semibold mb-6">Your Wardrobe</h1>
+      <div className="grid grid-cols-2 gap-6">
+        {/* Left Side - Categories */}
+        <div className="col-span-1">
+          <h2 className="text-xl font-semibold mb-4">Categories</h2>
+          <ul className="space-y-2">
+            <li className="text-gray-600 hover:text-gray-900 cursor-pointer transition duration-300">
+              Hats
+            </li>
+            <li className="text-gray-600 hover:text-gray-900 cursor-pointer transition duration-300">
+              Jackets
+            </li>
+            <li className="text-gray-600 hover:text-gray-900 cursor-pointer transition duration-300">
+              Shirts
+            </li>
+            <li className="text-gray-600 hover:text-gray-900 cursor-pointer transition duration-300">
+              Pants
+            </li>
+            <li className="text-gray-600 hover:text-gray-900 cursor-pointer transition duration-300">
+              Shoes
+            </li>
+          </ul>
         </div>
-      );
-}
+
+        {/* Right Side - Carousel */}
+        <div className="col-span-1">
+          <h2 className="text-xl font-semibold mb-4">Selected Category</h2>
+          <ImageCarousel />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Wardrobe;
