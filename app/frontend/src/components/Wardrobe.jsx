@@ -1,38 +1,53 @@
 import React from 'react';
 import ImageCarousel from './ImageCarousel'; // Import your ImageCarousel component
 
-const Wardrobe = () => {
-  return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-semibold mb-6">Your Wardrobe</h1>
-      <div className="grid grid-cols-2 gap-6">
-        {/* Left Side - Categories */}
-        <div className="col-span-1">
-          <h2 className="text-xl font-semibold mb-4">Categories</h2>
-          <ul className="space-y-2">
-            <li className="text-gray-600 hover:text-gray-900 cursor-pointer transition duration-300">
-              Hats
-            </li>
-            <li className="text-gray-600 hover:text-gray-900 cursor-pointer transition duration-300">
-              Jackets
-            </li>
-            <li className="text-gray-600 hover:text-gray-900 cursor-pointer transition duration-300">
-              Shirts
-            </li>
-            <li className="text-gray-600 hover:text-gray-900 cursor-pointer transition duration-300">
-              Pants
-            </li>
-            <li className="text-gray-600 hover:text-gray-900 cursor-pointer transition duration-300">
-              Shoes
-            </li>
-          </ul>
-        </div>
+// Import images for each category
+import hat1 from '../images/hats/hat1.jpg';
+import hat2 from '../images/hats/hat2.jpg';
+import hat3 from '../images/hats/hat3.jpg';
 
-        {/* Right Side - Carousel */}
-        <div className="col-span-1">
-          <h2 className="text-xl font-semibold mb-4">Selected Category</h2>
-          <ImageCarousel />
-        </div>
+import jacket1 from '../images/jackets/jacket1.jpg';
+import jacket2 from '../images/jackets/jacket2.jpg';
+import jacket3 from '../images/jackets/jacket3.jpg';
+
+import shirt1 from '../images/shirts/shirt1.jpg';
+import shirt2 from '../images/shirts/shirt2.jpg';
+import shirt3 from '../images/shirts/shirt3.jpg';
+
+import pants1 from '../images/pants/pants1.jpg';
+import pants2 from '../images/pants/pants2.jpg';
+import pants3 from '../images/pants/pants3.jpg';
+
+import shoes1 from '../images/shoes/shoes1.jpg';
+import shoes2 from '../images/shoes/shoes2.jpg';
+import shoes3 from '../images/shoes/shoes3.jpg';
+
+const Wardrobe = () => {
+  const hatsImages = [hat1, hat2, hat3];
+  const jacketsImages = [jacket1, jacket2, jacket3];
+  const shirtsImages = [shirt1, shirt2, shirt3];
+  const pantsImages = [pants1, pants2, pants3];
+  const shoesImages = [shoes1, shoes2, shoes3];
+
+  const categories = [
+    { name: 'Hats', images: hatsImages },
+    { name: 'Jackets', images: jacketsImages },
+    { name: 'Shirts', images: shirtsImages },
+    { name: 'Pants', images: pantsImages },
+    { name: 'Shoes', images: shoesImages },
+  ];
+
+  return (
+    <div className="p-4 border-1 m-8 h-full rounded-2xl  shadow-2xl">
+      <h1 className="text-3xl font-semibold mb-6 text-center">Your Wardrobe</h1>
+      <div className="flex-col">
+        {/* Categories */}
+        {categories.map((category, index) => (
+          <div key={index} className="mb-1">
+            {/* <h2 className="text-xl font-semibold mb-4">{category.name}</h2> */}
+            <ImageCarousel images={category.images} />
+          </div>
+        ))}
       </div>
     </div>
   );

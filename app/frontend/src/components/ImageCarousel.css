@@ -1,0 +1,8 @@
+.image-carousel .thumbs-wrapper {
+  
+}
+
+.image-carousel:hover .image-carousel .thumbs-wrapper {
+  display: block; /* Show the dots on hover */
+  opacity: 1; /* Fade in the dots */
+}
