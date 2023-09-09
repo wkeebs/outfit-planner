@@ -64,7 +64,8 @@ function Weather() {
   }
 
   return (
-    <body class="bg-gray-200 font-sans">
+    <body class="bg-white p-4 h-screen flex-col justify-center items-center m-8 rounded-2xl shadow-xl hover:shadow-2xl">
+      <h1 class="text-3xl text-center font-semibold mb-4">Weather</h1>
       <button onClick={handleLocationClick}>
         {" "}
         Allow Us to access your location so we can design the optimal fit
@@ -72,7 +73,6 @@ function Weather() {
 
       <div class="flex justify-center items-center h-screen">
         <div class="bg-white p-1 w-full">
-          <h2 class="text-2xl font-bold mb-4">Weather</h2>
           <div class="mb-2">
             Location: <span class="font-bold">{getUserLocation()}</span>
           </div>

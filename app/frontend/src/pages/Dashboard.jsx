@@ -9,10 +9,10 @@ function Dashboard() {
       <div class="w-1/4">
         <Wardrobe />
       </div>
-      <div class="w-1/3">
+      <div class="w-1/2">
         <GenerateOufit></GenerateOufit>
       </div>
-      <div class="w-1/3">
+      <div class="w-1/4">
         <Weather />
       </div>
     </body>
