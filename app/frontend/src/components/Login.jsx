@@ -1,9 +1,11 @@
 import axios from "axios"
 import React, {useRef, useState} from "react"
 import CreateAccount from "./CreateAccount";
+import { useNavigate } from "react-router-dom";
 
+function Login(userHasAuthenticated) {
 
-function Login() {
+    const navigate = useNavigate()
 
     const [isCreateAccountOpen, setIsCreateAccountOpen] = useState(false)
 
@@ -37,9 +39,9 @@ function Login() {
             console.log('Login successful:', response.data.message);
             setLoginError(null); // Reset any previous login error
             // Redirect the user to a new page on successful login
-        
+            userHasAuthenticated(true)
             // change this to navigate
-            window.location.href = '/home';
+            navigate('/home')
         } catch (error) {
             console.error('Login failed:', error);
             setLoginError('Invalid username or password');
