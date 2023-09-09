@@ -63,8 +63,16 @@ function Weather() {
     }
   }
 
+  function locationPerms() {
+    if (location === null) {
+      return "Please allow us to access your location so we can design the optimal fit"
+    } else {
+      return ""
+    }
+  }
+
   return (
-    <body class="bg-white p-4 flex-col justify-around items-center rounded-2xl shadow-xl hover:shadow-2xl h-full">
+    <body class="bg-white p-4 flex-col justify-around items-center rounded-2xl shadow-xl hover:shadow-2xl h-full transition duration-700">
       <h1 class="text-3xl text-center font-semibold h-1/5">Weather</h1>
       <div class="h-4/5 p-1 w-full text-center uppercase space-y-8 place-content-center">
         <div class="w-full flex place-content-center">
@@ -84,9 +92,8 @@ function Weather() {
         <div class="">
           <span class="text-2xl">{getWeatherType()}</span>
         </div>
-      <button onClick={handleLocationClick}>
-        {" "}
-        Allow Us to access your location so we can design the optimal fit
+      <button class="bg-white rounded-lg p-4 italic drop-shadow-lg hover:bg-slate-200 m-8 text-sm transition duration-700" onClick={handleLocationClick}>
+        {locationPerms()}
       </button>
       </div>
     </body>
