@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Weather() {
   const weatherAPI = {
@@ -9,28 +9,25 @@ function Weather() {
   const [location, setLocation] = useState(null);
   const [weather, setWeather] = useState(null);
 
-  function handleLocationClick() {
+  useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, error);
     } else {
       console.log("Geolocation not supported");
     }
-  }
+  }, []);
 
   function success(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     setLocation({ latitude, longitude });
-    console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
 
-    // Make API call to OpenWeatherMap
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${weatherAPI.key}&units=metric`
+      `${weatherAPI.base}weather?lat=${latitude}&lon=${longitude}&appid=${weatherAPI.key}&units=metric`
     )
       .then((response) => response.json())
       .then((data) => {
         setWeather(data);
-        console.log(data);
       })
       .catch((error) => console.log(error));
   }
@@ -40,42 +37,22 @@ function Weather() {
   }
 
   function getUserLocation() {
-    if (weather === null) {
-      return "";
-    } else {
-      return `${weather.name}, ${weather.sys.country}`;
-    }
+    return weather ? `${weather.name}, ${weather.sys.country}` : "";
   }
 
   function getTemperature() {
-    if (weather === null) {
-      return "";
-    } else {
-      return `${weather.main.temp}°C`;
-    }
+    return weather ? `${weather.main.temp}°C` : "";
   }
 
   function getWeatherType() {
-    if (weather === null) {
-      return "";
-    } else {
-      return `${weather.weather[0].main}`;
-    }
-  }
-
-  function locationPerms() {
-    if (location === null) {
-      return "Please allow us to access your location so we can design the optimal fit"
-    } else {
-      return ""
-    }
+    return weather ? `${weather.weather[0].main}` : "";
   }
 
   return (
-    <body class="bg-white p-4 flex-col justify-around items-center rounded-2xl shadow-xl hover:shadow-2xl h-full transition duration-700">
-      <h1 class="text-3xl text-center font-semibold h-1/5">Weather</h1>
-      <div class="h-4/5 p-1 w-full text-center uppercase space-y-8 place-content-center">
-        <div class="w-full flex place-content-center">
+    <div className="bg-white p-4 flex-col justify-around items-center rounded-2xl shadow-xl hover:shadow-2xl h-full transition duration-700">
+      <h1 className="text-3xl text-center font-semibold h-1/5">Weather</h1>
+      <div className="h-4/5 p-1 w-full text-center uppercase space-y-8 place-content-center">
+        <div className="w-full flex place-content-center">
           <img
             width="100"
             height="100"
@@ -83,21 +60,19 @@ function Weather() {
             alt="cloud--v1"
           />
         </div>
-        <div class="">
-          <span class="text-2xl">{getUserLocation()}</span>
+        <div className="text-center">
+          <span className="text-xl">{getUserLocation()}</span>
         </div>
-        <div class="">
-          <span class="text-6xl truncate">{getTemperature()}</span>
+        <div className="text-center">
+          <span className="text-4xl truncate">{getTemperature()}</span>
         </div>
-        <div class="">
-          <span class="text-2xl">{getWeatherType()}</span>
+        <div className="text-center mt-[-0.5rem]">
+          <span className="text-lg">{getWeatherType()}</span>
         </div>
-      <button class="bg-white rounded-lg p-4 italic drop-shadow-lg hover:bg-slate-200 m-8 text-sm transition duration-700" onClick={handleLocationClick}>
-        {locationPerms()}
-      </button>
       </div>
-    </body>
+    </div>
   );
+
 }
 
 export default Weather;

@@ -9,20 +9,25 @@ function Dashboard() {
       <h1 class="text-5xl italic font-semibold tracking-wide text-center place-content-center">
         Outfit Wizard
       </h1>
-
-      <div class="flex gap-8">
-        <div class="w-1/4">
-          <Wardrobe />
+      <div className="flex gap-8">
+        <div className="w-1/4">
+            <div className="p-4 rounded-lg h-4/4">
+                <Wardrobe />
+            </div>
         </div>
 
-        <div class="w-1/2 place-items-center h-full">
-          <GenerateOufit></GenerateOufit>
+        <div className="w-1/2 place-items-center">
+            <div className="p-4 rounded-lg">
+            <GenerateOufit/>
+            </div>
         </div>
 
-        <div class="w-1/4">
-          <Weather />
+        <div className="w-1/4">
+            <div className="p-4 rounded-lg h-3/4">
+            <Weather />
+            </div>
         </div>
-      </div>
+    </div>
     </body>
   );
 }

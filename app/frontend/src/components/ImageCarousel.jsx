@@ -8,7 +8,7 @@ const ImageCarousel = ({ images }) => {
   const carouselRef = useRef(null);
 
   const imageStyle = {
-    maxHeight: "8rem", // Set your desired max-height
+    maxHeight: "5rem", // Set your desired max-height
     width: "auto",
     height: "auto",
   };
