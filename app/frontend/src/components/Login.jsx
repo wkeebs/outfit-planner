@@ -3,7 +3,7 @@ import React, {useRef, useState} from "react"
 import CreateAccount from "./CreateAccount";
 import { useNavigate } from "react-router-dom";
 
-function Login(userHasAuthenticated) {
+function Login({userHasAuthenticated}) {
 
     const navigate = useNavigate()
 
