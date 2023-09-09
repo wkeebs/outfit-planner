@@ -1,9 +1,11 @@
 import axios from "axios"
 import React, {useRef, useState} from "react"
-
+import CreateAccount from "./CreateAccount";
 
 
 function Login() {
+
+    const [isCreateAccountOpen, setIsCreateAccountOpen] = useState(false)
 
     // These will b used to set & change the password, username & login error (if occurs)
     const [username, setUsername] = useState("");
@@ -48,6 +50,8 @@ function Login() {
 
 
     return (
+        <>
+        {!isCreateAccountOpen && (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-96">
         <h2 className="text-2xl font-extrabold text-gray-900 mb-4">Log in</h2>
@@ -71,8 +75,17 @@ function Login() {
         onClick={handleSubmit}>
           Log in
         </button>
+        <div>
+             Don't have an account?  
+             <span className="ml-2 text-blue-500 hover:text-blue-700 underline hover:no-underline cursor-pointer" onClick={() => setIsCreateAccountOpen(true)}>Create one</span>
+        </div>
       </div>
     </div>
+        )}
+        {isCreateAccountOpen && (
+                <CreateAccount setIsCreateAccountOpen={setIsCreateAccountOpen} id='CreateAccount' />
+            )}
+    </>
     );
 }
 

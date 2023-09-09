@@ -2,8 +2,10 @@ import React, {useRef, useState} from "react"
 import axios from "axios"
 
 
-function CreateAccount() {
-
+function CreateAccount( { setIsCreateAccountOpen })  {
+    const handleClose = () => {
+        setIsCreateAccountOpen(false)
+    }
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -30,11 +32,9 @@ function CreateAccount() {
             const response = await axios.post('http://localhost:5001/users/create', user); // Send POST request to /login via axios
             console.log("Creating account")
             console.log('Account creation successful:', response.data.message);
-            setCreateError(null); // Reset any previous login error
-            // Redirect the user to a new page on successful login
-        
-            // change this to navigate
-            window.location.href = '/home';
+            setCreateError(null); 
+            handleClose()
+            
         } catch (error) {
             console.error('Account could not be created: ', error);
             setCreateError('Creation of Account failed');

@@ -29,8 +29,10 @@ router.route('/create').post(async (req, res) => {
 // Login route
 router.post('/login', async (req, res) => {
     try {
+      //return user from db if exists
       const user = await User.findOne({ username: req.body.username });
       if (user) {
+        // check if password entered matches up with the user's password
         const isPasswordValid = (user.password === req.body.password)
         if (isPasswordValid) {
           // Store user details in the session
