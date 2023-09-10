@@ -13,8 +13,8 @@ const OutfitGenerator = () => {
     'Scarf': 'Cold',
     'Boots': 'Cold',
     'Light jacket': 'Mild',
-    'Jeans': 'Mild',
-    'T-shirt': 'Hot',
+    'Jeans': 'Hot | Mild',
+    'T-shirt': 'Hot | Mild | Cold',
     'Shorts': 'Hot',
   };
   // Function to generate an ideal outfit based on selected items and weather
@@ -36,15 +36,15 @@ const OutfitGenerator = () => {
     if (weather && temperature) {
       if (temperature < 10) {
         // Filter selected items for cold weather
-        const coldWeatherItems = selectedItems.filter((item) => availableItems[item] === 'Cold');
+        const coldWeatherItems = selectedItems.filter((item) => availableItems[item].includes('Cold'));
         idealOutfit += "For cold weather: " + coldWeatherItems.join(', ');
       } else if (temperature >= 10 && temperature < 20) {
         // Filter selected items for mild weather
-        const mildWeatherItems = selectedItems.filter((item) => availableItems[item] === 'Mild');
+        const mildWeatherItems = selectedItems.filter((item) => availableItems[item].includes('Mild'));
         idealOutfit += "For mild weather: " + mildWeatherItems.join(', ');
       } else {
         // Filter selected items for warm weather
-        const hotWeatherItems = selectedItems.filter((item) => availableItems[item] === 'Hot');
+        const hotWeatherItems = selectedItems.filter((item) => availableItems[item].includes('Hot'));
         idealOutfit += "For warm weather: " + hotWeatherItems.join(', ');
       }
     } else {
