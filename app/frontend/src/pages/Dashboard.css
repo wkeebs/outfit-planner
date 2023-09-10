@@ -1,0 +1,14 @@
+.spacer {
+  aspect-ratio: 960/300;
+  height: 120vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.layer1 {
+  background-image: url("../assets/waves-bg.svg");
+}
