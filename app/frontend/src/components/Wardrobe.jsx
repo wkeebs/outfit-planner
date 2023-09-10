@@ -23,7 +23,7 @@ const Wardrobe = ({ selectedItems, setSelectedItems, availableItems }) => {
       <ul class="space-y-2 py-4">
         {Object.keys(availableItems).map((item) => (
           <li key={item} class="pl-2 text-gray-700 w-full">
-            <label class="flex items-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-slate-100 rounded-md p-1 ">
+            <label class="flex items-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-slate-100 rounded-md p-1 text-xl">
               <input
                 class="form-checkbox h-5 w-8 text-indigo-600"
                 type="checkbox"
