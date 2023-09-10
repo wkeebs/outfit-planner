@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Wardrobe = ({ selectedItems, setSelectedItems, availableItems }) => {
   // Define the list of available items
-  
 
   // Handle checkbox change
   const handleCheckboxChange = (item) => {
     // Check if the item is already selected
     if (selectedItems.includes(item)) {
       // If selected, remove it from the list
-      setSelectedItems(selectedItems.filter((selectedItem) => selectedItem !== item));
+      setSelectedItems(
+        selectedItems.filter((selectedItem) => selectedItem !== item)
+      );
     } else {
       // If not selected, add it to the list
       setSelectedItems([...selectedItems, item]);
@@ -17,13 +18,14 @@ const Wardrobe = ({ selectedItems, setSelectedItems, availableItems }) => {
   };
   console.log(selectedItems);
   return (
-    <div>
-      <h2>Select Items for Your Wardrobe:</h2>
-      <ul>
+    <div class="flex flex-col items-start">
+      <h2 class="text-2xl font-semibold mt-4">What Items Do You Own?:</h2>
+      <ul class="space-y-2 py-4">
         {Object.keys(availableItems).map((item) => (
-          <li key={item}>
-            <label>
+          <li key={item} class="pl-2 text-gray-700 w-full">
+            <label class="flex items-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-slate-100 rounded-md p-1 ">
               <input
+                class="form-checkbox h-5 w-8 text-indigo-600"
                 type="checkbox"
                 checked={selectedItems.includes(item)}
                 onChange={() => handleCheckboxChange(item)}
@@ -33,17 +35,8 @@ const Wardrobe = ({ selectedItems, setSelectedItems, availableItems }) => {
           </li>
         ))}
       </ul>
-      <h3>Selected Items:</h3>
-      <ul>
-        {selectedItems.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
     </div>
   );
 };
 
 export default Wardrobe;
-
-
-

@@ -56,16 +56,16 @@ const OutfitGenerator = () => {
   
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="w-1/2 px-4">
+    <div className="flex justify-center h-screen w-full">
+      <div className="w-1/3 px-4 shadow-2xl h-5/6 rounded-2xl mr-4">
         <Wardrobe selectedItems={selectedItems} setSelectedItems={setSelectedItems} availableItems={availableItems} />
       </div>
-      <div className="w-1/2 px-4">
-        <button onClick={generateOutfit} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+      <div class="w-1/2 px-4 flex flex-col justify-end items-center h-5/6 bg-black bg-opacity-10 rounded-2xl shadow-xl">
+        <button onClick={generateOutfit} className="bg-blue-500 hover:bg-blue-600 text-white font-bold my-8 py-2 px-4 rounded w-2/3 shadow-xl">
           Generate my outfit!
         </button>
       </div>
-      <div className="w-1/2 px-4">
+      <div className="w-1/3 px-4 h-5/6">
         <Weather weather={weather} setWeather={setWeather} />
       </div>
     </div>

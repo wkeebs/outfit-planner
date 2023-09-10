@@ -1,5 +1,6 @@
 .spacer {
   aspect-ratio: 960/300;
+  height: 120vh;
   width: 100%;
   background-repeat: no-repeat;
   background-position: center;

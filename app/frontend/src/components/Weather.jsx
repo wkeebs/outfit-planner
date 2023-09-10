@@ -64,16 +64,16 @@ function Weather({ weather, setWeather}) {
 
   return (
     <div className="bg-gradient-to-b from-blue-300 via-blue-500 to-blue-700 p-4 rounded-2xl shadow-xl hover:shadow-2xl h-full text-white transition duration-700">
-      <h1 className="text-3xl font-semibold text-center">Weather</h1>
+      <h1 className="text-3xl font-semibold text-center">Current Weather</h1>
       <div className="flex flex-col items-center justify-center h-4/5 space-y-8">
         <img
           src={`https://openweathermap.org/img/wn/${getWeatherIcon()}@2x.png`}
           alt="Weather Icon"
           className="w-24 h-24"
         />
-        <div className="text-xl">{getUserLocation()}</div>
-        <div className="text-xl truncate">{getTemperature()}</div>
-        <div className="mt-[-0.5rem] text-lg">{getWeatherType()}</div>
+        <div className="text-2xl">{getUserLocation()}</div>
+        <div className="text-5xl truncate">{getTemperature()}</div>
+        <div className="mt-[-0.5rem] text-2xl">{getWeatherType()}</div>
       </div>
     </div>
   );
