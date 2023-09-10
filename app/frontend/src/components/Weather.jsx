@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 function Weather() {
   const weatherAPI = {
@@ -8,6 +8,7 @@ function Weather() {
 
   const [location, setLocation] = useState(null);
   const [weather, setWeather] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -28,12 +29,17 @@ function Weather() {
       .then((response) => response.json())
       .then((data) => {
         setWeather(data);
+        setLoading(false); // Data has been loaded
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        setLoading(false); // Data loading failed
+      });
   }
 
   function error() {
     console.log("Unable to retrieve your location");
+    setLoading(false); // Data loading failed
   }
 
   function getUserLocation() {
@@ -45,34 +51,33 @@ function Weather() {
   }
 
   function getWeatherType() {
-    return weather ? `${weather.weather[0].main}` : "";
+    return weather ? `${weather.weather[0].description}` : "";
+  }
+
+  function getWeatherIcon() {
+    return weather ? `${weather.weather[0].icon}` : "";
+  }
+
+  // Conditional rendering based on loading state
+  if (loading) {
+    return <div>Loading...</div>;
   }
 
   return (
-    <div className="bg-white p-4 flex-col justify-around items-center rounded-2xl shadow-xl hover:shadow-2xl h-full transition duration-700">
-      <h1 className="text-3xl text-center font-semibold h-1/5">Weather</h1>
-      <div className="h-4/5 p-1 w-full text-center uppercase space-y-8 place-content-center">
-        <div className="w-full flex place-content-center">
-          <img
-            width="100"
-            height="100"
-            src="https://img.icons8.com/ios/100/cloud--v1.png"
-            alt="cloud--v1"
-          />
-        </div>
-        <div className="text-center">
-          <span className="text-xl">{getUserLocation()}</span>
-        </div>
-        <div className="text-center">
-          <span className="text-4xl truncate">{getTemperature()}</span>
-        </div>
-        <div className="text-center mt-[-0.5rem]">
-          <span className="text-lg">{getWeatherType()}</span>
-        </div>
+    <div className="bg-gradient-to-b from-blue-300 via-blue-500 to-blue-700 p-4 rounded-2xl shadow-xl hover:shadow-2xl h-full text-white transition duration-700">
+      <h1 className="text-3xl font-semibold text-center">Weather</h1>
+      <div className="flex flex-col items-center justify-center h-4/5 space-y-8">
+        <img
+          src={`https://openweathermap.org/img/wn/${getWeatherIcon()}@2x.png`}
+          alt="Weather Icon"
+          className="w-24 h-24"
+        />
+        <div className="text-xl">{getUserLocation()}</div>
+        <div className="text-xl truncate">{getTemperature()}</div>
+        <div className="mt-[-0.5rem] text-lg">{getWeatherType()}</div>
       </div>
     </div>
   );
-
 }
 
 export default Weather;
