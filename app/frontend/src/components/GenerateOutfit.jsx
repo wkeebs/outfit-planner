@@ -52,7 +52,7 @@ const OutfitGenerator = () => {
         </button>
       </div>
       <div className="w-1/2 px-4">
-        <Weather setWeather={setWeather} />
+        <Weather weather={weather} setWeather={setWeather} />
       </div>
     </div>
   );

@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-function Weather() {
+function Weather({ weather, setWeather}) {
   const weatherAPI = {
     key: "9d697a5570f8189811829f6eefe6e5c9",
     base: "https://api.openweathermap.org/data/2.5/",
   };
 
   const [location, setLocation] = useState(null);
-  const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
