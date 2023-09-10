@@ -21,3 +21,19 @@ Building under a time crunch is difficult - but the learning done in such a shor
 
 ## What's next for Outfit Wizard
 Moving forward, we are planning on extending the functionality of Outfit Wizard to include full API embedding for clothing, allowing users to store their wardrobe and clothes. We want users to have a customisable experience with persistent data across sessions - extending past their credentials. We hope to extend this to multiple outfits for a day - a more advanced algorithm for determining fits based on the tasks for the day.
+
+# Getting Started with Create React App
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
