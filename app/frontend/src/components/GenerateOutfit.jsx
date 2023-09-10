@@ -11,10 +11,34 @@ const OutfitGenerator = () => {
   const generateOutfit = () => {
     console.log(selectedItems);
 
-    // Rest of your generateOutfit function remains the same
-    // ...
+    console.log(selectedItems)
+    // Check if there are selected items
+    if (selectedItems.length === 0) {
+      alert('Please select some clothing items.');
+      return;
+    }
 
-    // Rest of your generateOutfit function remains the same
+    // Logic to determine the outfit based on the filteredItems and weather.temperature
+    let idealOutfit = "Your ideal outfit is: ";
+    
+    let temperature = weather.main.temp
+
+    if (weather && temperature) {
+      if (temperature < 10) {
+        // Customize this logic based on your outfit recommendations
+        idealOutfit += "For cold weather: " + selectedItems.filter('Cold');
+      } else if (temperature >= 10 && temperature < 20) {
+        // Customize this logic based on your outfit recommendations
+        idealOutfit += "For mild weather: " + selectedItems.join('Mild');
+      } else {
+        // Customize this logic based on your outfit recommendations
+        idealOutfit += "For warm weather: " + selectedItems.join('Hot');
+      }
+    } else {
+      idealOutfit += "Please wait for weather data.";
+    }
+    console.log(idealOutfit)
+    alert(idealOutfit);
   };
 
   return (
