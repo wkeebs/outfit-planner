@@ -9,14 +9,15 @@ const OutfitGenerator = () => {
 
 
   const availableItems = {
-    'Warm jacket': 'Cold',
-    'Scarf': 'Cold',
-    'Boots': 'Cold',
-    'Light jacket': 'Mild',
-    'Jeans': 'Hot | Mild',
-    'T-shirt': 'Hot | Mild | Cold',
-    'Shorts': 'Hot',
+    'Warm jacket': ['Cold', 'Top'],
+    'Scarf': ['Cold', 'Accessory'],
+    'Boots': ['Cold', 'Shoe'],
+    'Light jacket': ['Mild', 'Layer'],
+    'Jeans': ['Hot | Mild', 'Pants'],
+    'T-shirt': ['Hot | Mild | Cold', 'Shirt'],
+    'Shorts': ['Hot', 'Pants'],
   };
+  
   // Function to generate an ideal outfit based on selected items and weather
   const generateOutfit = () => {
     console.log(selectedItems);
@@ -29,31 +30,68 @@ const OutfitGenerator = () => {
   
     // Logic to determine the outfit based on the filteredItems and weather.temperature
     let idealOutfit = "Your ideal outfit is: ";
-    
+  
     let temperature = weather.main.temp;
     console.log(temperature);
   
     if (weather && temperature) {
+      const outfits = {
+        'Cold': new Set(),
+        'Mild': new Set(),
+        'Hot': new Set(),
+      };
+  
+      selectedItems.forEach((item) => {
+        const [itemTemperature, clothingCategory] = availableItems[item];
+  
+        if (itemTemperature.includes('Cold')) {
+          outfits['Cold'].add(item);
+        }
+  
+        if (itemTemperature.includes('Mild')) {
+          outfits['Mild'].add(item);
+        }
+  
+        if (itemTemperature.includes('Hot')) {
+          outfits['Hot'].add(item);
+        }
+      });
+  
       if (temperature < 10) {
-        // Filter selected items for cold weather
-        const coldWeatherItems = selectedItems.filter((item) => availableItems[item].includes('Cold'));
-        idealOutfit += "For cold weather: " + coldWeatherItems.join(', ');
+        idealOutfit += "For cold weather: ";
+        idealOutfit += getRandomItems(outfits['Cold']) + ', ';
       } else if (temperature >= 10 && temperature < 20) {
-        // Filter selected items for mild weather
-        const mildWeatherItems = selectedItems.filter((item) => availableItems[item].includes('Mild'));
-        idealOutfit += "For mild weather: " + mildWeatherItems.join(', ');
+        idealOutfit += "For mild weather: ";
+        idealOutfit += getRandomItems(outfits['Mild']) + ', ';
       } else {
-        // Filter selected items for warm weather
-        const hotWeatherItems = selectedItems.filter((item) => availableItems[item].includes('Hot'));
-        idealOutfit += "For warm weather: " + hotWeatherItems.join(', ');
+        idealOutfit += "For warm weather: ";
+        idealOutfit += getRandomItems(outfits['Hot']) + ', ';
       }
     } else {
       idealOutfit += "Please wait for weather data.";
     }
-    console.log(idealOutfit)
+  
+    console.log(idealOutfit);
     alert(idealOutfit);
   };
   
+  // Function to get random items from a Set
+  const getRandomItems = (itemSet) => {
+    const items = Array.from(itemSet);
+    const selectedItems = [];
+  
+    while (items.length > 0) {
+      const randomIndex = Math.floor(Math.random() * items.length);
+      selectedItems.push(items.splice(randomIndex, 1)[0]);
+    }
+  
+    return selectedItems.join(', ');
+  };
+  
+  
+  
+
+
 
   return (
     <div className="flex justify-center h-screen w-full">
