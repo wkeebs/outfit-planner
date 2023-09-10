@@ -10,21 +10,9 @@ function Dashboard() {
         Outfit Wizard
       </h1>
       <div className="flex gap-8">
-        <div className="w-1/4">
-            <div className="p-4 rounded-lg h-full">
-                <Wardrobe />
-            </div>
-        </div>
-
         <div className="w-1/2 place-items-center h-full">
             <div className="p-4 rounded-lg">
             <GenerateOufit/>
-            </div>
-        </div>
-
-        <div className="w-1/4">
-            <div className="p-4 rounded-lg h-full">
-            <Weather />
             </div>
         </div>
     </div>

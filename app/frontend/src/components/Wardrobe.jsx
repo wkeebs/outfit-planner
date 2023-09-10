@@ -1,21 +1,16 @@
 import React, { useState } from 'react';
 
-const WardrobeChecklist = () => {
-  // Initialize state for selected items
-  const [selectedItems, setSelectedItems] = useState([]);
-
+const Wardrobe = ({ selectedItems, setSelectedItems }) => {
   // Define the list of available items
-  const availableItems = [
-    'Hat',
-    'Jacket',
-    'Jumper',
-    'T-shirt',
-    'Long-sleeve',
-    'Pants',
-    'Shorts',
-    'Shoes',
-    'Thongs',
-  ];
+  const availableItems = {
+    'Warm jacket': 'Cold',
+    'Scarf': 'Cold',
+    'Boots': 'Cold',
+    'Light jacket': 'Mild',
+    'Jeans': 'Mild',
+    'T-shirt': 'Hot',
+    'Shorts': 'Hot',
+  };
 
   // Handle checkbox change
   const handleCheckboxChange = (item) => {
@@ -28,12 +23,12 @@ const WardrobeChecklist = () => {
       setSelectedItems([...selectedItems, item]);
     }
   };
-
+  console.log(selectedItems);
   return (
     <div>
       <h2>Select Items for Your Wardrobe:</h2>
       <ul>
-        {availableItems.map((item) => (
+        {Object.keys(availableItems).map((item) => (
           <li key={item}>
             <label>
               <input
@@ -56,5 +51,7 @@ const WardrobeChecklist = () => {
   );
 };
 
-export default WardrobeChecklist;
+export default Wardrobe;
+
+
 
