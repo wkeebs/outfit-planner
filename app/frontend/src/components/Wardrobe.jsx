@@ -1,16 +1,8 @@
 import React, { useState } from 'react';
 
-const Wardrobe = ({ selectedItems, setSelectedItems }) => {
+const Wardrobe = ({ selectedItems, setSelectedItems, availableItems }) => {
   // Define the list of available items
-  const availableItems = {
-    'Warm jacket': 'Cold',
-    'Scarf': 'Cold',
-    'Boots': 'Cold',
-    'Light jacket': 'Mild',
-    'Jeans': 'Mild',
-    'T-shirt': 'Hot',
-    'Shorts': 'Hot',
-  };
+  
 
   // Handle checkbox change
   const handleCheckboxChange = (item) => {
