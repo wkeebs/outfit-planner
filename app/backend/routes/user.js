@@ -8,6 +8,19 @@ router.route('/').get((req, res) => {
 });
 
 
+router.route('/zappos').post(async (req, res) => {
+
+  try {
+    model_details = {
+      ''
+      ''
+    }
+    const newModel = new Model(model_details)
+
+  }
+  res.json({ message: 'outfits returned successfully' });
+})
+
 // Create route
 router.route('/create').post(async (req, res) => {
     try {
@@ -25,6 +38,8 @@ router.route('/create').post(async (req, res) => {
         res.status(500).send();
     }
 });
+
+
 
 // Login route
 router.post('/login', async (req, res) => {
@@ -55,7 +70,7 @@ router.post('/login', async (req, res) => {
   });
 
 // Logout route
-router.post('/logout', (req, res) => {
+router.post('/logout', async(req, res) => {
     // Destroy the session to log out the user
     req.session.destroy((err) => {
       if (err) {
@@ -67,4 +82,16 @@ router.post('/logout', (req, res) => {
     });
   });
 
+
+
+  // Zappos API route
+router.post('/zappos', async (req, res) => {
+  try {
+    const response = await axios.request(options);
+    res.json(response.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while fetching data from Zappos.' });
+  }
+});
 module.exports = router;
